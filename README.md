@@ -8,7 +8,7 @@ Project 2 for IS303. As a group and using Git/Github, write a program that plays
     Menu will be:
    1. Add home team
    2. Add opponents
-        This will ask for number of games and a team for each one
+        (This will ask for number of games and a team for each one)
    3. Generate scores
    4. Quit
 

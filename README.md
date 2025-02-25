@@ -6,8 +6,8 @@ Project 2 for IS303. As a group and using Git/Github, write a program that plays
 2. Display of menu and return choice. Store in variable and use this value to determine which function to call next.
 
     Menu will be:
-   1. Add opponents
-        (This will ask for number of games and a team for each one)
+   1. Add teams
+        (This will ask for number of teams and a name for each one)
    2. Generate scores
    3. Quit
 

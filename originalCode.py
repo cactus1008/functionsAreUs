@@ -2,6 +2,15 @@
 # Generates team scores for each game and the displays all of the information gathered
 
 import random
+
+def display_intro():
+    # Displays an introduction and prompts for the user's name.
+    print("Welcome to the Women's Soccer Season Simulator!")
+    print("The Rules: You will choose a team, play a season, and compete against other teams!")
+    playerName =  input("Enter your name: ").strip()
+    print(f"Hello {playerName}, let's start the season!")
+    return playerName
+
 iGameCount = 0
 dictTeams = {}
 iWins = 0

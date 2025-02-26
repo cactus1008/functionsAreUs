@@ -1,6 +1,23 @@
 # Stores team name and score, opponent name and score, and win or loss all in a doctionary
 # Generates team scores for each game and the displays all of the information gathered
 
+def generateScores(home, away):
+    # Generate scores (no ties!)
+    iHomeScore = 0
+    iAwayScore = 0
+    while iHomeScore == iAwayScore:
+        iHomeScore = random.randrange(0,11)
+        iAwayScore = random.randrange(0,11)
+    
+    # Determine win or loss and inform user.
+    if iHomeScore > iAwayScore:
+        dictTeams[f'Game {game + 1}']['Win'] = 'W'
+        print(f"You won this game against {away}. The score was {iHomeScore}:{iAwayScore}.")
+
+    else:
+        dictTeams[f'Game {game + 1}']['Win'] = 'L'
+        print(f"You lost this game against {away}. The score was {iHomeScore}:{iAwayScore}.")
+
 import random
 iGameCount = 0
 dictTeams = {}
@@ -18,26 +35,15 @@ for game in range(iSeasonGames):
     sAwayTeam = input(f"Enter the name of the away team for game {iGameCount + 1}: ")
     iGameCount += 1
 
-# Generates scores (no ties!)
-
-    iHomeScore = 0
-    iAwayScore = 0
-    while iHomeScore == iAwayScore:
-        iHomeScore = random.randrange(0,11)
-        iAwayScore = random.randrange(0,11)
 
 # Stores everything in the dictionary and determines win or loss
 
-    dictTeams[f'Game {game + 1}'] = {
-        'HomeName': sHomeTeam,
-        'HomeScore': iHomeScore,
-        'OppName': sAwayTeam,
-        'AwayScore': iAwayScore
-    }
-    if iHomeScore > iAwayScore:
-        dictTeams[f'Game {game + 1}']['Win'] = 'W'
-    else:
-        dictTeams[f'Game {game + 1}']['Win'] = 'L'
+    # dictTeams[f'Game {game + 1}'] = {
+    #     'HomeName': sHomeTeam,
+    #     'HomeScore': iHomeScore,
+    #     'OppName': sAwayTeam,
+    #     'AwayScore': iAwayScore
+    # }
 
 # At the end of the season, prints the results of each game and final ratio of home team
 

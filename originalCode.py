@@ -1,7 +1,13 @@
 # Stores team name and score, opponent name and score, and win or loss all in a doctionary
 # Generates team scores for each game and the displays all of the information gathered
 
-def generateScores(home, away):
+import random
+iGameCount = 0
+dictTeams = {}
+iWins = 0
+iLoss = 0
+
+def generateScores(home, away, game):
     # Generate scores (no ties!)
     iHomeScore = 0
     iAwayScore = 0
@@ -11,14 +17,13 @@ def generateScores(home, away):
     
     # Determine win or loss and inform user.
     if iHomeScore > iAwayScore:
-        dictTeams[f'Game {game + 1}']['Win'] = 'W'
-        print(f"You won this game against {away}. The score was {iHomeScore}:{iAwayScore}.")
+        dictTeams[f'Game {game + 1}'] = 'W'
+        print(f"{home} won this game against {away}. The score was {iHomeScore}:{iAwayScore}.")
 
     else:
-        dictTeams[f'Game {game + 1}']['Win'] = 'L'
-        print(f"You lost this game against {away}. The score was {iHomeScore}:{iAwayScore}.")
+        dictTeams[f'Game {game + 1}'] = 'L'
+        print(f"{home} lost this game against {away}. The score was {iHomeScore}:{iAwayScore}.")
 
-import random
 
 def display_intro():
     # Displays an introduction and prompts for the user's name.
@@ -28,10 +33,6 @@ def display_intro():
     print(f"Hello {playerName}, let's start the season!")
     return playerName
 
-iGameCount = 0
-dictTeams = {}
-iWins = 0
-iLoss = 0
 
 # Get team name and number of games played
 

@@ -4,8 +4,7 @@
 import random
 iGameCount = 0
 dictTeams = {}
-iWins = 0
-iLoss = 0
+
 
 def generateScores(home, away, game):
     # Generate scores (no ties!)
@@ -86,6 +85,7 @@ def chooseTeams(teams):
                 print(f'That is not a valid option.')
     # Once the game is complete and record is printed, add the home team back into the list so the game can be replayed
     teams.append(sHomeName)
+    return sHomeName
 
 # Lists out all of the teams available to choose from in a numbered list
 def listTeams(teams):
@@ -103,6 +103,25 @@ def displayMenu():
     option = int(input("Enter option: "))
     return option
 
+
+def printSummary(sHomeTeam):
+    iWins = 0
+    iLoss = 0
+    for game, data in dictTeams.items():
+        if data == 'W':
+            iWins += 1
+        else:
+            iLoss += 1
+
+    print(f"\n{sHomeTeam}'s final season record: {iWins} - {iLoss}")
+    if iWins / (iWins + iLoss) >= 0.75:
+        print("Great Job!")
+    elif iWins / (iWins + iLoss) >= 0.5:
+        print("You had a good season!")
+    else:
+        print("Your teams needs to practice!")
+
+
 display_intro()
 choice = 1
 newList = []
@@ -113,22 +132,10 @@ while choice == 1:
         newList.extend(addTeams())
 
 if choice == 2:
-    chooseTeams(newList)
+    homeName = chooseTeams(newList)
+    printSummary(homeName)
 
-def printSummary(sHomeTeam):
-    for game, data in dictTeams.items():
-        if data == 'W':
-            iWins += 1
-        else:
-            iLoss += 1
 
-    print(f"\nFinal season record: {iWins} - {iLoss}")
-    if iWins / (iWins + iLoss) >= 0.75:
-        print("Great Job!")
-    elif iWins / (iWins + iLoss) >= 0.5:
-        print("You had a good season!")
-    else:
-        print("Your teams needs to practice!")
 
 
 # Stores everything in the dictionary and determines win or loss

@@ -30,7 +30,7 @@ def display_intro():
     print("Welcome to the Women's Soccer Season Simulator!")
     print("The Rules: You will choose a team, play a season, and compete against other teams!")
     playerName =  input("Enter your name: ").strip()
-    print(f"Hello {playerName}, let's start the season!")
+    print(f"Hello {playerName}, let's start the season!\n")
     return playerName
 
 def addTeams():
@@ -100,20 +100,30 @@ def displayMenu():
     print("1. Add Teams")
     print("2. Generate Scores")
     print("3. Quit")
-    option = int(input("Enter option: "))
-    return option
+    try:
+        option = int(input("Enter option: "))
+        return option
+    except:
+        return None
+
 
 display_intro()
 choice = 1
 newList = []
+contMenu = True
 
-while choice == 1:
+while contMenu == True:
     choice = displayMenu()
     if choice == 1:
         newList.extend(addTeams())
-
-if choice == 2:
-    chooseTeams(newList)
+    elif choice == 2:
+        chooseTeams(newList)
+    elif choice == 3:
+        print('\nThanks for playing! The program will now close.')
+        contMenu = False
+    else:
+        print('\nPlease enter a valid option.\n')
+    
 
 
 # Stores everything in the dictionary and determines win or loss

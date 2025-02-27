@@ -18,11 +18,11 @@ def generateScores(home, away, game):
     # Determine win or loss and inform user.
     if iHomeScore > iAwayScore:
         dictTeams[f'Game {game + 1}'] = 'W'
-        print(f"{home} won this game against {away}. The score was {iHomeScore}:{iAwayScore}.")
+        print(f"{home} won this game against {away}. The score was {iHomeScore} - {iAwayScore}.")
 
     else:
         dictTeams[f'Game {game + 1}'] = 'L'
-        print(f"{home} lost this game against {away}. The score was {iHomeScore}:{iAwayScore}.")
+        print(f"{home} lost this game against {away}. The score was {iHomeScore} - {iAwayScore}.")
 
 
 def display_intro():
@@ -32,6 +32,15 @@ def display_intro():
     playerName =  input("Enter your name: ").strip()
     print(f"Hello {playerName}, let's start the season!")
     return playerName
+
+def addTeams():
+    teamList = []
+    currInput = ""
+    while currInput != "/":
+        currInput = input("Add a team name (enter / to finish adding teams): ")
+        if currInput != "/":
+            teamList.append(currInput)
+    return teamList
 
 def chooseTeams(teams):
     # Clear the games in the dictionary to ensure replayability
@@ -85,6 +94,26 @@ def listTeams(teams):
         print(f'{iTeamCount}: {team}')
         iTeamCount += 1
 
+# Function that displays the menu
+def displayMenu():
+    print("Menu:")
+    print("1. Add Teams")
+    print("2. Generate Scores")
+    print("3. Quit")
+    option = int(input("Enter option: "))
+    return option
+
+display_intro()
+choice = 1
+newList = []
+
+while choice == 1:
+    choice = displayMenu()
+    if choice == 1:
+        newList.extend(addTeams())
+
+if choice == 2:
+    chooseTeams(newList)
 
 
 # Stores everything in the dictionary and determines win or loss

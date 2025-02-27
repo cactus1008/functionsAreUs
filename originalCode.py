@@ -115,6 +115,21 @@ while choice == 1:
 if choice == 2:
     chooseTeams(newList)
 
+def printSummary(sHomeTeam):
+    for game, data in dictTeams.items():
+        if data == 'W':
+            iWins += 1
+        else:
+            iLoss += 1
+
+    print(f"\nFinal season record: {iWins} - {iLoss}")
+    if iWins / (iWins + iLoss) >= 0.75:
+        print("Great Job!")
+    elif iWins / (iWins + iLoss) >= 0.5:
+        print("You had a good season!")
+    else:
+        print("Your teams needs to practice!")
+
 
 # Stores everything in the dictionary and determines win or loss
 
@@ -127,21 +142,21 @@ if choice == 2:
 
 # At the end of the season, prints the results of each game and final ratio of home team
 
-print('')
-for game, data in dictTeams.items():
-    print(f"{game}:\n{data['HomeName']}'s score: {data['HomeScore']}, {data['OppName']}'s score: {data['AwayScore']}.")
-    if data['Win'] == 'W':
-        iWins += 1
-    else:
-        iLoss += 1
+# print('')
+# for game, data in dictTeams.items():
+#     print(f"{game}:\n{data['HomeName']}'s score: {data['HomeScore']}, {data['OppName']}'s score: {data['AwayScore']}.")
+#     if data['Win'] == 'W':
+#         iWins += 1
+#     else:
+#         iLoss += 1
 
-print(f'\nFinal season record: {iWins} - {iLoss}')
+# print(f'\nFinal season record: {iWins} - {iLoss}')
 
-# Prints out final message based on the ratio
+# # Prints out final message based on the ratio
 
-if iWins/iSeasonGames >= 0.75:
-    print("Qualified for the NCAA Women's Soccer Tournament!\n")
-elif iWins/iSeasonGames >= 0.5:
-    print('You had a good season.\n')
-else:
-    print('Your team needs to practice!\n')
+# if iWins/iSeasonGames >= 0.75:
+#     print("Qualified for the NCAA Women's Soccer Tournament!\n")
+# elif iWins/iSeasonGames >= 0.5:
+#     print('You had a good season.\n')
+# else:
+#     print('Your team needs to practice!\n')

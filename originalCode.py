@@ -33,17 +33,58 @@ def display_intro():
     print(f"Hello {playerName}, let's start the season!")
     return playerName
 
+def chooseTeams(teams):
+    # Clear the games in the dictionary to ensure replayability
+    dictTeams.clear()
 
-# Get team name and number of games played
+    # Select the Home Team
+    listTeams(teams)
+    bValid = False
+    while bValid == False:
+        # use 'Try' to ensure that invalid choices don't crash the code
+        try:
+            iHomeTeam = int(input('Select a home team from the list above (enter list number): '))
+            # Grab the team name so it can be re-added after the games are finished (for replayability so team doesnt need to manually be re-added)
+            sHomeName = teams[iHomeTeam - 1]
+            # Remove home team from list
+            teams.pop(iHomeTeam - 1)
+            bValid = True
+        except:
+            print(f'That is not a valid option. Please select a number from the list.')
 
-sHomeTeam = input("Enter your Home Team's name: ")
-iSeasonGames = int(input(f"Enter how many games {sHomeTeam} will play in their season (enter a number): "))
+    #Choose how many games
+    bValid = False
+    while bValid == False:
+        # use 'Try' to ensure that invalid choices don't crash the code
+        try:
+            iGames = int(input('How many games would you like to simulate? (Please enter a whole number): '))
+            bValid = True
+        except:
+            print('Please enter a whole number.')
 
-# Loop each game to get opponent name
+    # Select opponents for each game played
+    for game in range(iGames):
+        listTeams(teams)
+        bValid = False
+        while bValid == False:
+            # use 'Try' to ensure that invalid choices don't crash the code
+            try:
+                iOpponent = int(input(f'select an opponent for game {game + 1} (enter list number): '))
+                # Call the generateScores() function
+                generateScores(sHomeName, teams[iOpponent - 1], game)
+                bValid = True
+            except:
+                print(f'That is not a valid option.')
+    # Once the game is complete and record is printed, add the home team back into the list so the game can be replayed
+    teams.append(sHomeName)
 
-for game in range(iSeasonGames):
-    sAwayTeam = input(f"Enter the name of the away team for game {iGameCount + 1}: ")
-    iGameCount += 1
+# Lists out all of the teams available to choose from in a numbered list
+def listTeams(teams):
+    iTeamCount = 1
+    for team in teams:
+        print(f'{iTeamCount}: {team}')
+        iTeamCount += 1
+
 
 
 # Stores everything in the dictionary and determines win or loss

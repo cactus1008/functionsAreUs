@@ -100,8 +100,11 @@ def displayMenu():
     print("1. Add Teams")
     print("2. Generate Scores")
     print("3. Quit")
-    option = int(input("Enter option: "))
-    return option
+    try:
+        option = int(input("Enter option: "))
+        return option
+    except:
+        return None
 
 
 def printSummary(sHomeTeam):
@@ -120,50 +123,30 @@ def printSummary(sHomeTeam):
         print("You had a good season!")
     else:
         print("Your teams needs to practice!")
+    print(' ')
 
-
+# Function 1
 display_intro()
 choice = 1
 newList = []
+contMenu = True
 
-while choice == 1:
+# Loops until quit is selected
+while contMenu == True:
+    # Function 2
     choice = displayMenu()
     if choice == 1:
         newList.extend(addTeams())
-
-if choice == 2:
-    homeName = chooseTeams(newList)
-    printSummary(homeName)
-
-
-
-
-# Stores everything in the dictionary and determines win or loss
-
-    # dictTeams[f'Game {game + 1}'] = {
-    #     'HomeName': sHomeTeam,
-    #     'HomeScore': iHomeScore,
-    #     'OppName': sAwayTeam,
-    #     'AwayScore': iAwayScore
-    # }
-
-# At the end of the season, prints the results of each game and final ratio of home team
-
-# print('')
-# for game, data in dictTeams.items():
-#     print(f"{game}:\n{data['HomeName']}'s score: {data['HomeScore']}, {data['OppName']}'s score: {data['AwayScore']}.")
-#     if data['Win'] == 'W':
-#         iWins += 1
-#     else:
-#         iLoss += 1
-
-# print(f'\nFinal season record: {iWins} - {iLoss}')
-
-# # Prints out final message based on the ratio
-
-# if iWins/iSeasonGames >= 0.75:
-#     print("Qualified for the NCAA Women's Soccer Tournament!\n")
-# elif iWins/iSeasonGames >= 0.5:
-#     print('You had a good season.\n')
-# else:
-#     print('Your team needs to practice!\n')
+    elif choice == 2:
+        # Function 3 (Function 4 is inside of this function)
+        homeName = chooseTeams(newList)
+        # Function 5
+        printSummary(homeName)
+    # Quits the program
+    elif choice == 3:
+        print('\nThanks for playing! The program will now close.')
+        # Ends the loop
+        contMenu = False
+    # This is if something is not selected in the list
+    else:
+        print('\nPlease enter a valid option.\n')

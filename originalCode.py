@@ -106,17 +106,26 @@ def displayMenu():
     except:
         return None
 
-
+# Function that prints the home team and their respective record
 def printSummary(sHomeTeam):
+    
+    # Declares the varibles that will calculate wins and losses
     iWins = 0
     iLoss = 0
+
+    # For Loop to loop through all the results pf games stored in the dictionary dictTeams
     for game, data in dictTeams.items():
+
+        # If data stored is a win, store add one to iWins. Else add one to iLoss
         if data == 'W':
             iWins += 1
         else:
             iLoss += 1
 
+    # PRint the record in the format wins - Losses
     print(f"\n{sHomeTeam}'s final season record: {iWins} - {iLoss}")
+    
+    #Calculate wins and losses as a percent. Print statement customized based on success
     if iWins / (iWins + iLoss) >= 0.75:
         print("Great Job!")
     elif iWins / (iWins + iLoss) >= 0.5:

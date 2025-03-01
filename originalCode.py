@@ -17,11 +17,11 @@ def generateScores(home, away, game):
     # Determine win or loss and inform user.
     if iHomeScore > iAwayScore:
         dictTeams[f'Game {game + 1}'] = 'W'
-        print(f"{home} won this game against {away}. The score was {iHomeScore} - {iAwayScore}.")
+        print(f"\n{home} won this game against {away}. The score was {iHomeScore} - {iAwayScore}.")
 
     else:
         dictTeams[f'Game {game + 1}'] = 'L'
-        print(f"{home} lost this game against {away}. The score was {iHomeScore} - {iAwayScore}.")
+        print(f"\n{home} lost this game against {away}. The score was {iHomeScore} - {iAwayScore}.")
 
 
 def display_intro():
@@ -35,6 +35,7 @@ def display_intro():
 def addTeams():
     teamList = []
     currInput = ""
+    # Uses / as the way to exit the loop
     while currInput != "/":
         currInput = input("Add a team name (enter / to finish adding teams): ")
         if currInput != "/":
@@ -45,6 +46,9 @@ def chooseTeams(teams):
     # Clear the games in the dictionary to ensure replayability
     dictTeams.clear()
 
+    # Default teams if none are added
+    if teams == []:
+        teams = ['Stanford', 'Harvard', 'Yale', 'Princeton', 'University of Virginia', 'University of Michigan', 'University of California', 'University of Florida']
     # Select the Home Team
     listTeams(teams)
     bValid = False
@@ -89,6 +93,8 @@ def chooseTeams(teams):
 
 # Lists out all of the teams available to choose from in a numbered list
 def listTeams(teams):
+    # Prints a blank like (for aesthetics)
+    print(' ')
     iTeamCount = 1
     for team in teams:
         print(f'{iTeamCount}: {team}')
@@ -96,7 +102,7 @@ def listTeams(teams):
 
 # Function that displays the menu
 def displayMenu():
-    print("Menu:")
+    print("\nMenu:")
     print("1. Add Teams")
     print("2. Generate Scores")
     print("3. Quit")
@@ -132,7 +138,6 @@ def printSummary(sHomeTeam):
         print("You had a good season!")
     else:
         print("Your teams needs to practice!")
-    print(' ')
 
 # Function 1
 display_intro()
@@ -158,4 +163,4 @@ while contMenu == True:
         contMenu = False
     # This is if something is not selected in the list
     else:
-        print('\nPlease enter a valid option.\n')
+        print('\nPlease enter a valid option.')

@@ -1,3 +1,6 @@
+# IS 303 Section 003
+# Blake Pead, Rebecca Braatz, Joaquin Elizalde, Annie Jaynes, and Michael Jones
+# P2 - Functions are Us
 # Stores team name and score, opponent name and score, and win or loss all in a doctionary
 # Generates team scores for each game and the displays all of the information gathered
 
